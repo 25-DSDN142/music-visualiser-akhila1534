@@ -1,34 +1,38 @@
 
-let planeImg; 
-function preload() {
-    planeImg = loadImage('plane.png'); // Ensure plane.png is in your project folder
-}
+// let planeImg; 
+// function preload() {
+//     planeImg = loadImage('plane.png'); // Ensure plane.png is in your project folder
+// }
 
-function setup () {
-    createCanvas (900,600);
-   colorMode (HSB);
-}
-function draw_one_frame(words, vocal, drum, bass, other, counter) {
-// let Xcol = map (mouseX, 0, width, 0, 255);
-// let Ycol = map(mouseY, 0, height, 0, 255);
+// function setup () {
+//     createCanvas (900,600);
+//    colorMode (HSB);
+// }
+let firstRun = true;
+let img;
 let Bob = map (drum, 0, 100, -30, 30) //change last 2 to make more bob 
 let sky = map (counter, 0, 12053, 175, 315)
 colorMode (HSB);
 
-
+function draw_one_frame(words, vocal, drum, bass, other, counter) {
+// let Xcol = map (mouseX, 0, width, 0, 255);
+// let Ycol = map(mouseY, 0, height, 0, 255);
+if (firstRun) {
+    img = loadImage('images/plane.png'); // Ensure plane.png is in your project folder
+    firstRun = false;
+}
+   
 // }
 let c1 = color(sky, 50, 100)
 let c2 = color((sky+60) % 360, 50, 100)
 setGradient (c1, c2);
  //background 
  
-// plane 
-let planeX = map(vocal, 0, 100, 0, width);
-let planeY = 100 + 50 * sin(vocal * 0.1);
+// plane
 
-if (planeImg) {
-  image(planeImg, planeX, planeY, 80, 40);
-}
+// if (planeImg) {
+//   image(planeImg, planeX, planeY, 80, 40);
+// }
 
 //circle (mouseX,mouseY,40)
 
@@ -72,6 +76,33 @@ circle (760,90+Bob,70)
 circle (840,90+Bob,70)
 circle (880,100+Bob,50)
 circle (720,100+Bob,50)
+
+fill('#FF69B4'); // Black text, change color if needed
+textSize(28); // Adjust size as you like
+textFont ("Tahoma"); // Change to your preferred font
+textStyle(BOLD); // Make text bold
+textAlign(RIGHT, CENTER);
+text(words.toUpperCase(), width - 110, height / 2); // 30px from right and bottom edges
+
+// Replace the image code with this inside draw_one_frame:
+// let planeX = (counter * 3) % width; // Slow, continuous horizontal glide
+// let planeY = height / 2 + 100 * sin(counter * 0.01); // Smooth vertical glide
+
+// push();
+// translate(planeX, planeY);
+// scale(2.5); // Make the plane much bigger (adjust as needed)
+// fill(220);
+// stroke(0);
+// strokeWeight(2);
+// // Main body (bigger coordinates)
+// triangle(0, 0, 80, 20, 0, 40);
+// // Left wing
+// triangle(0, 0, 30, 20, -20, 30);
+// // Right wing
+// triangle(0, 40, 30, 20, -20, 30);
+// pop();
+
+
 
 function setGradient(c1, c2) {
     for (let y = 0; y <= height; y++) {
