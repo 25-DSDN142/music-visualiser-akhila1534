@@ -1,21 +1,35 @@
 
+let planeImg; 
+function preload() {
+    planeImg = loadImage('plane.png'); // Ensure plane.png is in your project folder
+}
+
+function setup () {
+    createCanvas (900,600);
+   colorMode (HSB);
+}
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // let Xcol = map (mouseX, 0, width, 0, 255);
 // let Ycol = map(mouseY, 0, height, 0, 255);
 let Bob = map (drum, 0, 100, -30, 30) //change last 2 to make more bob 
 let sky = map (counter, 0, 12053, 175, 315)
-colorMode (HSB)
-background (sky, 20, 100)
-// for (let x=0; x<5; x++) {
-//     let Space = 30*x
-//     circle (20,10+Space,30)
+colorMode (HSB);
+
 
 // }
+let c1 = color(sky, 50, 100)
+let c2 = color((sky+60) % 360, 50, 100)
+setGradient (c1, c2);
  //background 
  
- 
- //ellipse 
- fill (255)
+// plane 
+let planeX = map(vocal, 0, 100, 0, width);
+let planeY = 100 + 50 * sin(vocal * 0.1);
+
+if (planeImg) {
+  image(planeImg, planeX, planeY, 80, 40);
+}
+
 //circle (mouseX,mouseY,40)
 
 //cloud
@@ -59,8 +73,20 @@ circle (840,90+Bob,70)
 circle (880,100+Bob,50)
 circle (720,100+Bob,50)
 
-
-
-
+function setGradient(c1, c2) {
+    for (let y = 0; y <= height; y++) {
+      let inter = map(y, 0, height, 0, 1);
+      let c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(0, y, width, y);
+    }
+}
 
 }
+
+//Animating plane 
+
+// background (sky, 20, 100)
+// for (let x=0; x<5; x++) {
+//     let Space = 30*x
+//     circle (20,10+Space,30)
