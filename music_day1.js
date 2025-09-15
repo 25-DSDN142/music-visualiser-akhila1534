@@ -9,7 +9,8 @@
 //    colorMode (HSB);
 // }
 
-
+let firstRun = true;
+let img;
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // let Xcol = map (mouseX, 0, width, 0, 255);
@@ -19,6 +20,10 @@ let Bob = map (drum, 0, 100, -30, 30) //change last 2 to make more bob
 let sky = map (counter, 0, 12053, 290, 300)
 colorMode (HSB); 
 
+if (firstRun) {
+    img = loadImage('plane.png'); // Ensure plane.png is in your project folder
+    firstRun = false;
+  }
 
 // }
 let c1 = color(sky, 50, 100)
@@ -95,22 +100,22 @@ textAlign(RIGHT, CENTER);
 text(words.toUpperCase(), width - 110, height / 2); // 30px from right and bottom edges
 
 //Replace the image code with this inside draw_one_frame:
-let planeX = (counter * 3) % width; // Slow, continuous horizontal glide
-let planeY = height / 2 + 100 * sin(counter * 0.01); // Smooth vertical glide
+// let planeX = (counter * 3) % width; // Slow, continuous horizontal glide
+// let planeY = height / 2 + 100 * sin(counter * 0.01); // Smooth vertical glide
 
-push();
-translate(planeX, planeY);
-scale(1.5); // Make the plane much bigger (adjust as needed)
-fill(220);
-stroke(0);
-strokeWeight(2);
-// Main body (bigger coordinates)
-triangle(0, 0, 80, 20, 0, 40);
-// Left wing
-triangle(0, 0, 30, 20, -20, 30);
-// Right wing
-triangle(0, 40, 30, 20, -20, 30);
-pop();
+// push();
+// translate(planeX, planeY);
+// scale(1.5); // Make the plane much bigger (adjust as needed)
+// fill(220);
+// stroke(0);
+// strokeWeight(2);
+// // Main body (bigger coordinates)
+// triangle(0, 0, 80, 20, 0, 40);
+// // Left wing
+// triangle(0, 0, 30, 20, -20, 30);
+// // Right wing
+// triangle(0, 40, 30, 20, -20, 30);
+// pop();
 
 
 function setGradient(c2, c1) {
