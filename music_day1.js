@@ -21,7 +21,7 @@ let sky = map (counter, 0, 12053, 290, 300)
 colorMode (HSB); 
 
 if (firstRun) {
-    img = loadImage('plane.png'); // Ensure plane.png is in your project folder
+    img = loadImage('paper plane.png'); // Ensure plane.png is in your project folder
     firstRun = false;
   }
 
@@ -80,6 +80,7 @@ circle (840,90+Bob,70)
 circle (880,100+Bob,50)
 circle (720,100+Bob,50)
 
+
 //cloud 1 layer 
 // fill(310,30,100,0.5)
 // circle (520,230+Bob,100)
@@ -127,6 +128,12 @@ function setGradient(c2, c1) {
     }
 }
 
+image(img, 300, 300, 100, 100)
+
+push();
+scale(-1,1);
+image(img, -300, 400, 100, 100)
+pop();
 }
 
 //Animating plane 
