@@ -1,16 +1,7 @@
 
-// let planeImg; 
-// function preload() {
-//     planeImg = loadImage('plane.png'); // Ensure plane.png is in your project folder
-// }
-
-// function setup () {
-//     createCanvas (900,600);
-//    colorMode (HSB);
-// }
-
 let firstRun = true;
 let img;
+let planeX = 0;
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // let Xcol = map (mouseX, 0, width, 0, 255);
@@ -21,7 +12,7 @@ let sky = map (counter, 0, 12053, 290, 300)
 colorMode (HSB); 
 
 if (firstRun) {
-    img = loadImage('paperplane.png'); // Ensure plane.png is in your project folder
+    img = loadImage('plane.png'); // Ensure plane.png is in your project folder
     firstRun = false;
   }
 
@@ -32,7 +23,8 @@ setGradient (c2, c1); // This code was from the help of Copilot
 
 
 
-//cloud
+//cloud 1
+
 noStroke ()
 fill(0,0,100,0.5)
 circle (500,190+Bob,120)
@@ -74,13 +66,41 @@ circle (880,100+Bob,50)
 circle (720,100+Bob,50)
 
 
-
 fill(255); // Black text, change color if needed
 textSize(28); // Adjust size as you like
 textFont ("Tahoma"); // Change to your preferred font
 textStyle(BOLD); // Make text bold
 textAlign(RIGHT, CENTER);
 text(words.toUpperCase(), width - 110, height / 2); // 30px from right and bottom edges
+
+
+function setGradient(c2, c1) {
+    for (let y = 0; y <= height; y++) {
+      let inter = map(y, 0, height, 0, 1);
+      let c = lerpColor(c2, c1, inter);
+      stroke(c);
+      line(0, y, width, y);
+    } // This code was from the help of Copilot 
+}
+
+image(img, planeX, 100, 400, 200)
+
+push();
+scale(-1,1);
+image(img, planeX-width, 300, 300, 200)
+pop();
+
+if (planeX > width) { 
+    planeX = 0; // Reset plane position when it goes off-screen
+}
+planeX ++
+}
+//Animating plane 
+
+// background (sky, 20, 100)
+// for (let x=0; x<5; x++) {
+//     let Space = 30*x
+//     circle (20,10+Space,30)
 
 //Replace the image code with this inside draw_one_frame:
 // let planeX = (counter * 3) % width; // Slow, continuous horizontal glide
@@ -99,32 +119,3 @@ text(words.toUpperCase(), width - 110, height / 2); // 30px from right and botto
 // // Right wing
 // triangle(0, 40, 30, 20, -20, 30);
 // pop();
-
-
-function setGradient(c2, c1) {
-    for (let y = 0; y <= height; y++) {
-      let inter = map(y, 0, height, 0, 1);
-      let c = lerpColor(c2, c1, inter);
-      stroke(c);
-      line(0, y, width, y);
-    } // This code was from the help of Copilot 
-}
-
-image(img, 300, 300, 100, 100)
-
-push();
-scale(-1,1);
-image(img, -300, 400, 100, 100)
-pop();
-
-if (image > width) {
-    image = -100; // Reset position to the left off-screen
-  }
-}
-
-//Animating plane 
-
-// background (sky, 20, 100)
-// for (let x=0; x<5; x++) {
-//     let Space = 30*x
-//     circle (20,10+Space,30)
