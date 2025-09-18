@@ -21,23 +21,16 @@ let sky = map (counter, 0, 12053, 290, 300)
 colorMode (HSB); 
 
 if (firstRun) {
-    img = loadImage('paper plane.png'); // Ensure plane.png is in your project folder
+    img = loadImage('paperplane.png'); // Ensure plane.png is in your project folder
     firstRun = false;
   }
 
 // }
 let c1 = color(sky, 50, 100)
 let c2 = color((sky+60) % 360, 50, 100)
-setGradient (c2, c1);
- //background 
- 
-// plane
+setGradient (c2, c1); // This code was from the help of Copilot 
 
-// if (planeImg) {
-//   image(planeImg, planeX, planeY, 80, 40);
-// }
 
-//circle (mouseX,mouseY,40)
 
 //cloud
 noStroke ()
@@ -81,17 +74,6 @@ circle (880,100+Bob,50)
 circle (720,100+Bob,50)
 
 
-//cloud 1 layer 
-// fill(310,30,100,0.5)
-// circle (520,230+Bob,100)
-// circle (450,250+Bob,90)
-// circle (570,250+Bob,90)
-// circle (400,260+Bob,60)
-// circle (615,260+Bob,60)
-
-// Draw a crescent moon at (cx, cy)
-
-
 
 fill(255); // Black text, change color if needed
 textSize(28); // Adjust size as you like
@@ -125,7 +107,7 @@ function setGradient(c2, c1) {
       let c = lerpColor(c2, c1, inter);
       stroke(c);
       line(0, y, width, y);
-    }
+    } // This code was from the help of Copilot 
 }
 
 image(img, 300, 300, 100, 100)
