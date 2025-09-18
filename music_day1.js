@@ -116,6 +116,10 @@ push();
 scale(-1,1);
 image(img, -300, 400, 100, 100)
 pop();
+
+if (image > width) {
+    image = -100; // Reset position to the left off-screen
+  }
 }
 
 //Animating plane 
