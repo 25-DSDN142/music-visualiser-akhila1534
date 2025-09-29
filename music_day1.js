@@ -4,8 +4,6 @@ let img;
 let planeX = 0;
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-// let Xcol = map (mouseX, 0, width, 0, 255);
-// let Ycol = map(mouseY, 0, height, 0, 255);
 
 let Bob = map (drum, 0, 100, -30, 30) //change last 2 to make more bob 
 let sky = map (counter, 0, 12053, 290, 300)
@@ -95,27 +93,3 @@ if (planeX > width) {
 }
 planeX ++
 }
-//Animating plane 
-
-// background (sky, 20, 100)
-// for (let x=0; x<5; x++) {
-//     let Space = 30*x
-//     circle (20,10+Space,30)
-
-//Replace the image code with this inside draw_one_frame:
-// let planeX = (counter * 3) % width; // Slow, continuous horizontal glide
-// let planeY = height / 2 + 100 * sin(counter * 0.01); // Smooth vertical glide
-
-// push();
-// translate(planeX, planeY);
-// scale(1.5); // Make the plane much bigger (adjust as needed)
-// fill(220);
-// stroke(0);
-// strokeWeight(2);
-// // Main body (bigger coordinates)
-// triangle(0, 0, 80, 20, 0, 40);
-// // Left wing
-// triangle(0, 0, 30, 20, -20, 30);
-// // Right wing
-// triangle(0, 40, 30, 20, -20, 30);
-// pop();
